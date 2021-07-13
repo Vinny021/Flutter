@@ -13,10 +13,8 @@ class _LoginPageState extends State<LoginPage> {
   String email;
   String password;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body:SingleChildScrollView(
+  Widget _body(){
+    return SingleChildScrollView(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -31,25 +29,29 @@ class _LoginPageState extends State<LoginPage> {
                   child: Image.asset('assets/images/logo.png'),
                 ),
                 SizedBox(height:40),
-                TextField(
-                  onChanged: (text){
-                    email = text;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder()
-                  )
+                Card(
+                  child: TextField(
+                    onChanged: (text){
+                      email = text;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder()
+                    )
+                  ),
                 ),
                 SizedBox(height:10),
-                TextField(
-                  onChanged: (text){
-                    password = text;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder()
-                  )
+                Card(
+                  child: TextField(
+                    onChanged: (text){
+                      password = text;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder()
+                    )
+                  ),
                 ),
                 SizedBox(height:10),
                 ElevatedButton(
@@ -60,13 +62,37 @@ class _LoginPageState extends State<LoginPage> {
                       print('Usuário inválido');
                     }
                   }, 
-                  child:Text('Entrar')
+                  child:Text('Entrar'),
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    textStyle: TextStyle(
+                      fontSize: 20,
+                    )
+                  )
+                  
                 )
               ],
             ),
           ),
         ),
-      )
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children:[
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Image.asset(
+              'assets/images/background.jpg', 
+              fit: BoxFit.cover,
+            )
+          ),
+          _body()
+        ]
+      ),
     );
   }
 }
