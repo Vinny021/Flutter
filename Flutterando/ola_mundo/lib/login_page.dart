@@ -25,6 +25,12 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: Image.asset('assets/images/logo.png'),
+                ),
+                SizedBox(height:40),
                 TextField(
                   onChanged: (text){
                     email = text;
@@ -49,9 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   onPressed: (){
                     if(email == 'viniciusbarbosa021@gmail.com' && password == '123'){
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomePage())
-                      );
+                      Navigator.of(context).pushReplacementNamed('/home');
                     }else{
                       print('Usuário inválido');
                     }
