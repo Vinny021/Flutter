@@ -1,14 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:tinder_login_page/app_widget.dart';
 
-void main(){
-  runApp(MyApp());
+void main(List<String> args){
+  runApp(AppWidget());
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      
-    );
-  }
-}
