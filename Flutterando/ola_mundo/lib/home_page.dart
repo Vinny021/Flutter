@@ -21,6 +21,27 @@ class HomePageState extends State<HomePage> {
           CustomSwitch(),
         ],
       ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(height:20),
+            UserAccountsDrawerHeader(
+              accountName: Text('Vinícius Barbosa'), 
+              accountEmail: Text('viniciusbarbosa021@gmail.com'),
+              currentAccountPicture: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Image.network('https://media-exp1.licdn.com/dms/image/C4E03AQG7gKJElNUR6A/profile-displayphoto-shrink_200_200/0/1612901300024?e=1631750400&v=beta&t=7bEpXsQzWdt0QIjbgYb2BL5LoXrHPWzEysx1bK4ss8s')),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Desconectar'),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              }
+            ),
+          ],
+        ),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
