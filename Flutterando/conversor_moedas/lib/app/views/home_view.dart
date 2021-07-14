@@ -1,3 +1,4 @@
+import 'package:conversor_moedas/app/components/currency_component.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomeView extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: const EdgeInsets.only(top:100, left:25, right:25, bottom: 20),
+          padding: const EdgeInsets.only(top:150, left:25, right:25, bottom: 20),
           child: Column(
             children: [
               Center(
@@ -19,52 +20,16 @@ class HomeView extends StatelessWidget {
                   child: Image.asset('assets/images/currency.png'),
                 ),
               ),
-              SizedBox(height: 10),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: SizedBox(
-                        height:64,
-                        child: DropdownButton(
-                          underline: Container(
-                            height: 1,
-                            color: Colors.amber,
-                          ),
-                          isExpanded: true,
-                          items: [
-                            DropdownMenuItem(child: Text('Real')),
-                            DropdownMenuItem(child: Text('Dolar')),
-                          ], 
-                          onChanged: (value) {},
-                        ),
-                      )
-                    ),
-                    SizedBox(width: 15,),
-                    Expanded(
-                      flex: 2,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.amber)
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.amber)
-                          )
-                        ),
-                      )
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height:40),
+              SizedBox(height: 40),
+              CurrencyComponent(),
+              SizedBox(height: 20),
+              CurrencyComponent(),
+              SizedBox(height:60),
               ElevatedButton(
                 onPressed: () {}, 
                 child: Text('Converter'),
                 style: ButtonStyle(
-                  backgroundColor:MaterialStateProperty.all(Colors.amber), 
+                  backgroundColor:MaterialStateProperty.all(Colors.yellow[700]), 
                 ),
               )
                 
