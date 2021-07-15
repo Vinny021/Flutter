@@ -7,7 +7,7 @@ class CurrencyModel {
   final double euro;
   final double bitcoin;
 
-  static List<CurrencyModel> getCurrencys() {
+  static List<CurrencyModel> getCurrencies() {
     return <CurrencyModel>[
       CurrencyModel(
           name: 'Real', real: 1.0, dolar: 0.19, euro: 0.16, bitcoin: 0.0000059),
