@@ -4,13 +4,13 @@ import 'package:flutter/widgets.dart';
 class HomeController{
   List <CurrencyModel> currencies;
   
-  TextEditingController fromText = TextEditingController();
-  TextEditingController toText = TextEditingController();
+  final TextEditingController fromText;
+  final TextEditingController toText; 
 
   CurrencyModel fromCurrency;
   CurrencyModel toCurrency;
 
-  HomeController(){
+  HomeController({this.fromText, this.toText}){
     currencies = CurrencyModel.getCurrencies();
     fromCurrency = currencies[0];
     toCurrency = currencies[1];
@@ -18,17 +18,17 @@ class HomeController{
 
   void convert(){
     String input = fromText.text;
-    double value = double.tryParse(input);
+    double value = double.tryParse(input.replaceAll(',', '.'));
     double result = 0;
 
     if(toCurrency.name == 'Real'){
-      result = value * toCurrency.real;
+      result = value * fromCurrency.real;
     }else if(toCurrency.name == 'Dolar'){
-      result = value * toCurrency.dolar;
+      result = value * fromCurrency.dolar;
     }else if(toCurrency.name == 'Euro'){
-      result = value * toCurrency.euro;
+      result = value * fromCurrency.euro;
     }else if(toCurrency.name == 'Bitcoin'){
-      result = value * toCurrency.bitcoin;
+      result = value * fromCurrency.bitcoin;
     }
 
     toText.text = result.toStringAsFixed(2);
