@@ -1,36 +1,28 @@
 class TimeController {
-  int _hora = 12;
-  int _min = 0;
-  int _minTotais = 720;
+  static int hour = 12;
+  static int min = 0;
+  static int minTotais = 720;
+  static int timeDiference = 0;
+  static double partitions = 10;
 
-  int getHora(){
-    return _hora;
+  static void transformaMin({int horas, int minutos}) {
+    minTotais = 0;
+    minTotais = horas * 60 + minutos;
   }
 
-  int getMinutos(){
-    return _min;
-  }
+  static void updateHora(int horas, int minutos) {
+    hour = horas;
+    min = minutos;
 
-  int getMinutosTotais(){
-    return _minTotais;
-  }
-
-  void transformaMin({int horas, int minutos}){
-    _minTotais = 0;
-    _minTotais = horas * 60 + minutos;
-  }
-  
-  void updateHora(int horas, int minutos){
-    _hora = horas;
-    _min = minutos;
-    
     transformaMin(horas: horas, minutos: minutos);
   }
 
-}
+  static updateTimeDiference() {
+    DateTime now = DateTime.now();
+    int nowHour = now.hour;
+    int nowMinute = now.minute;
+    int nowMinTotal = nowHour * 60 + nowMinute;
 
-TimeController timeControll = TimeController();
-
-getTimeControll(){
-  return timeControll;
+    timeDiference = minTotais - nowMinTotal;
+  }
 }

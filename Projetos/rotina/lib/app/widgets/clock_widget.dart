@@ -12,8 +12,6 @@ class ClockWidget extends StatefulWidget {
 }
 
 class _ClockWidgetState extends State<ClockWidget> {
-  TimeController timeController = getTimeControll();
-
   double height;
   double _width;
 
@@ -78,7 +76,8 @@ class _ClockWidgetState extends State<ClockWidget> {
           _time = _hour + ' : ' + _minute;
         }
 
-        timeController.updateHora(int.parse(_hour), int.parse(_minute));
+        TimeController.updateHora((int.parse(_hour) < DateTime.now().hour)? (int.parse(_hour) + 24) : int.parse(_hour), int.parse(_minute));
+        TimeController.updateTimeDiference();
 
         _timeController.text = _time;
       });
